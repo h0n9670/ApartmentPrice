@@ -1,0 +1,5 @@
+preprocessing15 : 15년도 데이터를 가공
+ - passive 기대수익률 분석에 사용 예정
+
+PreprocessingPeriod : 2016 2,3,4 가공
+ - 기준이 되는 데이터
