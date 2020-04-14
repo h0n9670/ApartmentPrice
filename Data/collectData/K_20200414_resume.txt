@@ -1,0 +1,42 @@
+2015~2019 : 아파트 실거래가 거래 정보
+ - http://rtdown.molit.go.kr(국토교통부)
+ - 시군구, 번지, 본번, 부번, 단지명, 전용면적, 계약년월, 계약일, 거래금액, 층, 건축년도, 도로명
+
+ApartRealTradingIndex : 아파트 실거래 지수
+ - http://ecos.bok.or.kr/(한국은행 경제 통계시스템)
+ - 월별 날짜, 지수
+ - 2016/01-2020/01
+
+ApartTradingIndex : 아파트 거래 지수
+ -http://ecos.bok.or.kr/(한국은행 경제 통계시스템)
+ - 월별 날짜, 지수
+ - 2016/01-2020/01
+
+InterestRate : 금리
+ -http://ecos.bok.or.kr/(한국은행 경제 통계시스템)
+ - 월별 날짜, 지수
+
+KOSDAQ : 코스닥
+- https://kr.investing.com/
+-  날짜, 종가, 오픈, 고가, 저가, 거래량, 변동 %
+ - 2016/01-2020/01
+
+KOSPI : 코스피
+- https://kr.investing.com/
+-  날짜, 종가, 오픈, 고가, 저가, 거래량, 변동 %
+ - 2016/01-2020/01
+
+policy : 정책
+http://www.korea.kr/special/policyCurationView.do?newsId=148865571(정책위키)
+ - DATE , CONTENT
+ - 자료를 수집해서 수기로 작성
+ - 2016/01-2020/01
+
+PriceIndex : 소비자물가지수
+ -http://ecos.bok.or.kr/(한국은행 경제 통계시스템)
+ - 월별 날짜, 지수
+ - 2016/01-2020/01
+
+Period.csv : 2016.02.03.04
+ - http://rtdown.molit.go.kr(국토교통부)
+ - 시군구, 번지, 본번, 부번, 단지명, 전용면적, 계약년월, 계약일, 거래금액, 층, 건축년도, 도로명
