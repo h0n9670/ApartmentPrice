@@ -7,7 +7,7 @@ library(dplyr)
 library(reshape)
 
 #데이터 불러오기
-data <- read.csv("../Data/collectData/K_20200414_2015.csv")
+data <- read.csv("./Data/collectData/K_20200414_2015.csv")
 
 #컬럼명 설정
 data<-rename(data,c(단지명 = "Apart",
@@ -52,4 +52,4 @@ for (i in 2:length(apart)) {
 }
 
 # 파일저장
-write.csv(dataM,"../Data/preprocessingData/K_20200414_preprocessing15.csv",row.names = FALSE)
+write.csv(dataM,"./Data/preprocessingData/K_20200414_preprocessing15.csv",row.names = FALSE)
