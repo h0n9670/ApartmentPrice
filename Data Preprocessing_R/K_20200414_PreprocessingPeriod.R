@@ -1,23 +1,30 @@
 #패키지 설치
 install.packages("dplyr")
 install.packages("reshape")
+install.packages("tidyr")
 
 #라이브러리 불러오기
 library(dplyr)
 library(reshape)
+library(tidyr)
 
 #데이터 불러오기
-data <- read.csv("./Data/collectData/K_20200414_Period.csv")
+data <- read.csv("../Data/collectData/K_20200414_Period.csv")
 
 #컬럼명 설정
 data<-rename(data,c(단지명 = "Apart",
                        전용면적... = "size",
                        계약년월 = "date",
-                       거래금액.만원. = "price"))
+                       거래금액.만원. = "price",
+                       시군구="gudong",
+                       번지="address",
+                       층="floor",
+                       건축년도="ConstructionYear"))
 
 # date 수정
-data$date <- gsub("2016","",data$date)
-data$date <- gsub("0","",data$date)
+data$date <- gsub("201602","14",data$date)
+data$date <- gsub("201603","15",data$date)
+data$date <- gsub("201604","16",data$date)
 
 # price 수정
 data$price <- gsub(",","",data$price)
@@ -29,27 +36,19 @@ data$size <-as.numeric(data$size)
 # pps(평당가격) 설정
 data$pps <- data$price/data$size
 data$pps <- round(data$pps)
-data%>%select(Apart,date,pps)
 
-# 평당평균가 설정
-data <- aggregate(pps~date+Apart,
-                  data,
-                  mean)
-data$pps <- round(data$pps)
+# 2016시점에서 연식 계산
+data$year <- 2016-data$ConstructionYear
 
+# 군과 구로 나누기
+data$gudong <- gsub("서울특별시 ","",data$gudong)
+data <- separate(data,gudong,into=c("gu","dong"),
+         sep=" ",
+         remove=TRUE
+         )
 
-# 아파트명 모으기
-apart <- as.character(data$Apart)
-apart <- unique(apart)
-
-# 아파트명을 컬럼으로 date를 index로, pps를 해당 값으로 설정
-dataM<-data%>%filter(Apart==apart[1])%>%select(date,pps)%>%rename(c(pps=apart[1]))
-for (i in 2:length(apart)) {
-  dataM <- merge(dataM,
-                 data%>%filter(Apart==apart[i])%>%select(date,pps)%>%rename(c(pps=apart[i])),
-                 by='date',
-                 all=TRUE)
-}
+# 원하는 컬럼 추출
+data <- data%>%select(Apart,pps,gu,dong,address,Apart,size,floor,year)
 
 # 파일저장
-write.csv(dataM,"./Data/preprocessingData/K_20200414_PreprocessingPeriod.csv",row.names = FALSE)
+write.csv(data,"../Data/preprocessingData/K_20200414_PreprocessingPeriod.csv",row.names = FALSE)
