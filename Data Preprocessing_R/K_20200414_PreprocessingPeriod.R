@@ -47,8 +47,12 @@ data <- separate(data,gudong,into=c("gu","dong"),
          remove=TRUE
          )
 
-# 원하는 컬럼 추출
+# 원하는 컬럼 추출(active용)
 data <- data%>%select(Apart,pps,gu,dong,address,Apart,size,floor,year)
+
+# 아파트이름만 추출(passive용)
+ApartName <- unique(data%>%select(Apart,pps))
 
 # 파일저장
 write.csv(data,"../Data/preprocessingData/K_20200414_PreprocessingPeriod.csv",row.names = FALSE)
+write.csv(ApartName,"../Data/preprocessingData/K_20200414_PreprocessingPeriodApartName.csv",row.names = FALSE)
