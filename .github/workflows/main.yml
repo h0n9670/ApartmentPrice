@@ -10,17 +10,22 @@ jobs:
 
 
     steps:
-
     - uses: actions/checkout@v2
 
-    - name: "context"
+    - name: "AUTHOR"
       env:
         WHO = ${{github.actor}}
-        WHAT = ${{github.sha}}
-        EVENT = ${{github.event}}
       run: 
         echo "AUTHOR => $WHO"
+    - name: "COMMIT_ID"
+      env:
+        WHAT = ${{github.sha}}
+      run: 
         echo "Commit_id => $WHAT"
+    - name: "EVENT"
+      env:
+        EVENT = ${{github.event}}
+      run: 
         echo "EVENT => $EVENT"
         
 
