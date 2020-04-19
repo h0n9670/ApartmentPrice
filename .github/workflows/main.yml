@@ -3,29 +3,15 @@ name: github checkout
 on: [push]
 
 jobs:
-
-  build:
-
+  one:
     runs-on: ubuntu-latest
-
-
     steps:
-    - uses: actions/checkout@v2
-
     - name: "AUTHOR"
-      env:
-        WHO = ${{github.actor}}
-      run: 
-        echo "AUTHOR => $WHO"
+      env: WHO = ${{github.actor}}
+      run: echo "AUTHOR => $WHO"
     - name: "COMMIT_ID"
-      env:
-        WHAT = ${{github.sha}}
-      run: 
-        echo "Commit_id => $WHAT"
+      env: WHAT = ${{github.sha}}
+      run: echo "Commit_id => $WHAT"
     - name: "EVENT"
-      env:
-        EVENT = ${{github.event}}
-      run: 
-        echo "EVENT => $EVENT"
-        
-
+      env: EVENT = ${{github.event}}
+      run: echo "EVENT => $EVENT"
