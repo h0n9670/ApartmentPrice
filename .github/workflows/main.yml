@@ -6,12 +6,15 @@ jobs:
   one:
     runs-on: ubuntu-latest
     steps:
-    - name: "AUTHOR"
-      env: WHO = ${{github.actor}}
+    - name: AUTHOR
+      env: 
+        WHO : ${{github.actor}}
       run: echo "AUTHOR => $WHO"
-    - name: "COMMIT_ID"
-      env: WHAT = ${{github.sha}}
+    - name: COMMIT_ID
+      env: 
+        WHAT : ${{github.sha}}
       run: echo "Commit_id => $WHAT"
-    - name: "EVENT"
-      env: EVENT = ${{github.event}}
+    - name: EVENT
+      env: 
+        EVENT : ${{github.event}}
       run: echo "EVENT => $EVENT"
