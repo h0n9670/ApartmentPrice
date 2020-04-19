@@ -6,6 +6,7 @@ jobs:
   one:
     runs-on: ubuntu-latest
     steps:
+    - uses: action/checkout@v2
     - name: AUTHOR
       env: 
         WHO : ${{github.actor}}
@@ -14,7 +15,3 @@ jobs:
       env: 
         WHAT : ${{github.sha}}
       run: echo "Commit_id => $WHAT"
-    - name: EVENT
-      env: 
-        EVENT : ${{github.event}}
-      run: echo "EVENT => $EVENT"
