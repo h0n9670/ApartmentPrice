@@ -8,11 +8,33 @@ library(reshape)
 
 #데이터 불러오기
 data_2015 <- read.csv("../Data/collectData/K_20200414_2015.csv")
+data_2014 <- read.csv("../Data/collectData/K_20200419_2014.csv")
+data_2013 <- read.csv("../Data/collectData/K_20200419_2013.csv")
+data_2012 <- read.csv("../Data/collectData/K_20200419_2012.csv")
+data_2011 <- read.csv("../Data/collectData/K_20200419_2011.csv")
+data_2010 <- read.csv("../Data/collectData/K_20200419_2010.csv")
+data_2009 <- read.csv("../Data/collectData/K_20200419_2009.csv")
+data_2008 <- read.csv("../Data/collectData/K_20200419_2008.csv")
 data_Period <- read.csv("../Data/collectData/K_20200414_Period.csv")
+
 data_Period <- data_Period%>%select(단지명,전용면적...,계약년월,거래금액.만원.)
+data_2014 <- data_2014%>%select(단지명,전용면적...,계약년월,거래금액.만원.)
+data_2013 <- data_2013%>%select(단지명,전용면적...,계약년월,거래금액.만원.)
+data_2012 <- data_2012%>%select(단지명,전용면적...,계약년월,거래금액.만원.)
+data_2011 <- data_2011%>%select(단지명,전용면적...,계약년월,거래금액.만원.)
+data_2010 <- data_2010%>%select(단지명,전용면적...,계약년월,거래금액.만원.)
+data_2009 <- data_2009%>%select(단지명,전용면적...,계약년월,거래금액.만원.)
+data_2008 <- data_2008%>%select(단지명,전용면적...,계약년월,거래금액.만원.)
 
 #데이터 합치기 1502-1604
 data <- rbind(data_Period,data_2015)
+data <- rbind(data,data_2014)
+data <- rbind(data,data_2013)
+data <- rbind(data,data_2012)
+data <- rbind(data,data_2011)
+data <- rbind(data,data_2010)
+data <- rbind(data,data_2009)
+data <- rbind(data,data_2008)
 
 #컬럼명 설정
 data<-rename(data,c(단지명 = "Apart",
@@ -21,11 +43,11 @@ data<-rename(data,c(단지명 = "Apart",
                        거래금액.만원. = "price"))
 
 # date 수정
-data$date <- gsub("201601","13",data$date)
-data$date <- gsub("201602","14",data$date)
-data$date <- gsub("201603","15",data$date)
-data$date <- gsub("201604","16",data$date)
-data$date <- gsub("2015","",data$date)
+#data$date <- gsub("201601","13",data$date)
+#data$date <- gsub("201602","14",data$date)
+#data$date <- gsub("201603","15",data$date)
+#data$date <- gsub("201604","16",data$date)
+#data$date <- gsub("2015","",data$date)
 
 # price 수정
 data$price <- gsub(",","",data$price)
@@ -60,4 +82,4 @@ for (i in 2:length(apart)) {
 }
 
 # 파일저장
-write.csv(dataM,"../Data/preprocessingData/K_20200414_preprocessing15.csv",row.names = FALSE)
+write.csv(dataM,"../Data/preprocessingData/K_20200419_preprocessing08_16.csv",row.names = FALSE)
