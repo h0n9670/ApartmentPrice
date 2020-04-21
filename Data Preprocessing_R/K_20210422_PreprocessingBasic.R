@@ -120,4 +120,4 @@ for (i in 1:nrow(lastNullData)){
 nrow(data_location)
 colSums(is.na(data_location))
 
-write.csv(data_location, "~/ApartmentPrice/Data/preprocessingData/K_PrepocessingBasic.csv", row.names = FALSE)
+write.csv(data_location, "~/ApartmentPrice/Data/preprocessingData/K_20200422_PrepocessingBasic.csv", row.names = FALSE)
