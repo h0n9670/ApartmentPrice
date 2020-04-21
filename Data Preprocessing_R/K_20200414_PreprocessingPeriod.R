@@ -1,3 +1,6 @@
+#경로설정
+setwd("~/ApartmentPrice/Data Preprocessing_R")
+
 #패키지 설치
 install.packages("dplyr")
 install.packages("reshape")
@@ -17,14 +20,14 @@ data<-rename(data,c(단지명 = "Apart",
                        계약년월 = "date",
                        거래금액.만원. = "price",
                        시군구="gudong",
-                       번지="address",
+                       도로명="address",
                        층="floor",
                        건축년도="ConstructionYear"))
 
 # date 수정
-data$date <- gsub("201602","14",data$date)
-data$date <- gsub("201603","15",data$date)
-data$date <- gsub("201604","16",data$date)
+data$date <- gsub("201602","2",data$date)
+data$date <- gsub("201603","3",data$date)
+data$date <- gsub("201604","4",data$date)
 
 # price 수정
 data$price <- gsub(",","",data$price)

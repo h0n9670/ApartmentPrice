@@ -72,4 +72,4 @@ result2$address
 
 
 # csv로 저장
-write.csv(result2, '~/ApartmentPrice/Data/preprocessingData/K_20200421_entrcSeoul.csv', row.names=T)
+write.csv(result2, '~/ApartmentPrice/Data/preprocessingData/K_20200421_PreprocessingEntrcSeoul.csv', row.names=FALSE)
