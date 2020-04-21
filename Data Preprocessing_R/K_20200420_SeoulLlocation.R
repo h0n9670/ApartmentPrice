@@ -1,5 +1,5 @@
 # 기본 경로 설정
-setwd("C:/ApartmentPrice/Data Preprocessing_R")
+setwd("~/ApartmentPrice/Data Preprocessing_R")
 
 install.packages("rgdal")
 install.packages("sp")
@@ -8,18 +8,14 @@ install.packages("sp")
 library(sp)
 library(rgdal)
 library(dplyr)
-
-# txt 파일을 한 번에 불러들이기 위해 for문 작성
-# 데이터를 가져올 폴더 경로 설정 및 확인
-dir <- ("C:/ApartmentPrice/Data/collectData");dir
+library(tidyr)
 
 # 빈 데이터프레임 생성
 data <- data.frame()
 
-data <- read.delim(paste(dir, K_20200421_entrcSeoul.txt, sep='\\'), sep="|", header=F)
+data <- read.delim('~/ApartmentPrice/Data/collectData/K_20200421_entrcSeoul.txt',sep='|',header = FALSE)
 
-# 구조 확인 및 
-str(data)
+# 구조 확인
 head(data)
 
 
@@ -64,8 +60,16 @@ d2 <- d %>% mutate(V19=paste0(V17, ',', V18))
 # coord 데이터셋에도 동일한 값을 V19로 생성 후 V19, long, lat만 추출.
 coord2 <- coord %>% mutate(V19=paste0(grs.long, ',', grs.lat)) %>% select(V19, long, lat)
 
-# V19를 Key로 하여 원본 데이터에 long, lat을 left join
-result <- left_join(d2, coord2, by="V19") %>% select(-c("V17","V18","V19"))
+# V19를 Key로 하여 원본 데이터에 long, lat, v8
+result <- left_join(d2, coord2, by="V19") %>% select(c("V8","V10","long","lat"))
+
+#주소 만들기
+result1 <- unite(result,address,V8,V10,sep=" ")
+
+#대표값으로 첫번째값 선정
+result2 <- summarise(group_by(result1,address),long=first(long),lat=first(lat))
+result2$address
+
 
 # csv로 저장
-write.csv(result, paste(dir, file="address_convert.csv", sep='\\'), row.names=T)
+write.csv(result2, '~/ApartmentPrice/Data/preprocessingData/K_20200421_entrcSeoul.csv', row.names=T)
