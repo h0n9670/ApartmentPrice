@@ -8,7 +8,7 @@ library(readxl)
 
 setwd("~/ApartmentPrice/Data Preprocessing_R")
 # 데이터 불러오기
-academy_data <- readxl::read_excel("../Data/collectData/(중부-강남)+2015년+하반기+기준+학원현황.xlsx", sheet = "강동구 송파구 학원현황")
+academy_data <- readxl::read_excel("../Data/collectData/H_academy_mid_south_2015.xlsx", sheet = "용산구 종로구 중구 학원")
 
 # 중복값 제거
 academy_data2 <- unique(academy_data)
@@ -35,5 +35,5 @@ academy_data3 <- na.omit(academy_data2)
 sum(is.na(academy_data3))
 
 # CSV로 저장
-write.csv(academy_data3, "../Data/preprocessingData/H_academy_강동구_송파구.csv", row.names = FALSE)
+write.csv(academy_data3, "../Data/preprocessingData/H_academy_용산구_종로구_중구.csv", row.names = FALSE)
 

@@ -7,7 +7,7 @@ install.packages("readxl")
 library(readxl)
 
 # 데이터 불러오기
-academy_data <- readxl::read_excel("../Data/collectData/(중부-강남)+2015년+하반기+기준+학원현황.xlsx", sheet = "강서구 양천구 학원현황")
+academy_data <- readxl::read_excel("../Data/collectData/H_academy_mid_south_2015.xlsx", sheet = "강서구 양천구 학원현황")
 
 # 중복값 제거
 academy_data2 <- unique(academy_data)
