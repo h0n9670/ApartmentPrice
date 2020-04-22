@@ -1,4 +1,4 @@
-
+﻿
 # 아파트 좌표를 뽑기위한 2016년 2,3,4월 매매 주택 주소
 O_20200420_APT_address.csv
 
@@ -6,3 +6,11 @@ O_20200420_APT_address.csv
 # 아파트 주소 파일에 각 주소마다 좌표 뽑아서
 아파트 주소, Longitude, Latitude
 컬럼있는 데이터
+
+20200422
+
+# 주소 데이터와 가까운 거리의 중학교 파일
+O_20200422_dist_from_middleschool.csv
+
+# 주소 데이터와 가까운 거리의 대학교 파일
+O_20200422_dist_from_uni.csv
